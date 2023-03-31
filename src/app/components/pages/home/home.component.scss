@@ -1,0 +1,18 @@
+
+
+
+input, textarea, h3 {
+    margin: 1% 0 1% 0;
+}
+
+.submit-btn-notValid {
+    display: inline-block;
+    width: 100%;
+    background-color: #dddddd;
+    border: 1px solid #dddddd;
+    color: #ffffff;
+    padding: 12px 50px;
+    font-size: 15px;
+    font-weight: 400;
+    transition: 0.5s;
+}
