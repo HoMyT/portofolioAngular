@@ -10,7 +10,7 @@ import { SubscribeComponent } from './components/layouts/subscribe/subscribe.com
 
 import { HomeComponent } from './components/pages/home/home.component';
 import { AboutComponent } from './components/pages/about/about.component';
-import { TeamComponent } from './components/pages/team/team.component';
+
 import { ServicesComponent } from './components/pages/services/services.component';
 import { PricingComponent } from './components/pages/pricing/pricing.component';
 import { PartnerComponent } from './components/pages/partner/partner.component';
@@ -28,8 +28,10 @@ import { BlogRightSidebarComponent } from './components/pages/blog-right-sidebar
 import { ErrorComponent } from './components/pages/error/error.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ConnexionPageComponent } from './components/pages/connexion-page/connexion-page.component';
+import { InterceptorReponseRequestService } from './core/interceptor/interceptor-reponse-request.service';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +42,6 @@ import { ConnexionPageComponent } from './components/pages/connexion-page/connex
     SubscribeComponent,
     HomeComponent,
     AboutComponent,
-    TeamComponent,
     ServicesComponent,
     PricingComponent,
     PartnerComponent,
@@ -64,7 +65,13 @@ import { ConnexionPageComponent } from './components/pages/connexion-page/connex
     ReactiveFormsModule,
     HttpClientModule
     ],
-    providers: [],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: InterceptorReponseRequestService,
+            multi: true
+        }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

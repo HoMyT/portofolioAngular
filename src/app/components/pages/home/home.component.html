@@ -41,7 +41,7 @@
             <div class="col-lg-4 col-md-6" *ngFor="let datas of data">
                     <div class="single-services-box">
                         <div class="icon">
-                            <i class="flaticon-big-data"></i>
+                            <i [class]="this.datas.icone"></i>
                         </div>
                         <h3>
                             {{this.datas.title}}
@@ -142,7 +142,7 @@
 
                         <div class="col-lg-5 col-md-12">
                             <div class="tab-image">
-                                <img src="assets/img/tab-solution.png" alt="image">
+                                <img src="assets/img/schemaData.png" alt="image">
                             </div>
                         </div>
                     </div>
@@ -177,7 +177,7 @@
 
                         <div class="col-lg-5 col-md-12">
                             <div class="tab-image">
-                                <img src="assets/img/tab-solution.png" alt="image">
+                                <img src="assets/img/schemaData.png" alt="image">
                             </div>
                         </div>
                     </div>
@@ -220,7 +220,7 @@
 
                         <div class="col-lg-5 col-md-12">
                             <div class="tab-image">
-                                <img src="assets/img/tab-solution.png" alt="image">
+                                <img src="assets/img/schemaData.png" alt="image">
                             </div>
                         </div>
                     </div>
@@ -259,7 +259,7 @@
 
                         <div class="col-lg-5 col-md-12">
                             <div class="tab-image">
-                                <img src="assets/img/tab-solution.png" alt="image">
+                                <img src="assets/img/schemaData.png" alt="image">
                             </div>
                         </div>
                     </div>
@@ -365,7 +365,7 @@
     </div>
 </section>
 
-<section class="blog-section pt-100 pb-70">
+<!-- <section class="blog-section pt-100 pb-70">
     <div class="container">
         <div class="section-title">
             <span>Blog</span>
@@ -443,7 +443,8 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
+<br>
 
 <div class="contact-section ptb-100">
     <div class="container">
@@ -460,7 +461,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="name" id="name" class="form-control" placeholder="Name">
+                                    <input type="text" name="name" id="name" class="form-control" formControlName="name" placeholder="Name">
                                 </div>
                             </div>
                             <br>
@@ -471,28 +472,21 @@
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="phone_number" id="phone_number" class="form-control" placeholder="Phone">
+                                    <input type="text" name="phone_number" id="phone_number" formControlName="phone" class="form-control" placeholder="Phone">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="msg_subject" id="msg_subject" class="form-control" placeholder="Subject">
+                                    <input type="text" name="msg_subject" id="msg_subject" formControlName="subject" class="form-control" placeholder="Subject">
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12">
                                 <div class="form-group">
-                                    <textarea name="message" class="form-control" id="message" cols="30" rows="6" placeholder="Your Message"></textarea>
+                                    <textarea name="message" class="form-control" id="message" cols="30" rows="6" formControlName="message" placeholder="Your Message"></textarea>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12">
-                                <button type="submit" [className]="this.sendMessage.valid ? 'submit-btn' : 'submit-btn-notValid' " [disabled]="!this.sendMessage.valid">Submit Now!</button>
-                            </div>
-                            <div *ngIf="this.token == null" class="col-lg-12 col-md-12">
-                                <p>
-                                    <strong>
-                                        <h4>Vous devez etre connectez pour effectuer cette action <a href="#">Se connecter</a></h4>
-                                    </strong>
-                                </p>
+                                <button (click)="sendEmail()" type="submit" [className]="this.sendMessage.valid ? 'submit-btn' : 'submit-btn-notValid' " [disabled]="!this.sendMessage.valid">Submit Now!</button>
                             </div>
                         </div>
                     </form>

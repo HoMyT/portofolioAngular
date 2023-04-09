@@ -9,14 +9,20 @@ import { catchError } from 'rxjs/operators';
 export class RequeteService {
 
     constructor(private http: HttpClient) { }
-
-    getMessageInfo(name:string, email:string, phone: number, subject:string, message:string): Observable<ServicesComponent> {
-        return this.http.post<ServicesComponent>('localhost:8080/api', {name, email, phone, subject, message})
+    url: string = "http://localhost:3000/";
+    getMessageInfo(name:string, email:string, phone: number, subject:string, message:string): Observable<ServicesComponent>{
+        return this.http.post<ServicesComponent>(`${this.url}email`, {name, email, phone, subject, message})
         .pipe(
             catchError(this.handleError)
         )
     }
 
+    AddUserNEwLester(email:string): Observable<ServicesComponent>{
+        return this.http.post<ServicesComponent>(`${this.url}email/addUserNewLester`, {email})
+        .pipe(
+            catchError(this.handleError)
+        )
+    }
 
 
 private handleError(error: HttpErrorResponse) {

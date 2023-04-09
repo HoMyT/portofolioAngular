@@ -17,73 +17,13 @@
 <section class="services-section pt-100 pb-70">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-6">
+            <div *ngFor="let datas of data" class="col-lg-4 col-md-6">
                 <div class="single-services-box">
                     <div class="icon">
-                        <i class="flaticon-big-data"></i>
+                        <i [class]="this.datas.icone"></i>
                     </div>
-                    <h3>Big Data</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum </p>
-                    <div class="services-btn">
-                        <a routerLink="/services-details" class="services-btn-one">Read More <i class="flaticon-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-services-box">
-                    <div class="icon">
-                        <i class="flaticon-data-analytics"></i>
-                    </div>
-                    <h3>Data Analytics</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum </p>
-                    <div class="services-btn">
-                        <a routerLink="/services-details" class="services-btn-one">Read More <i class="flaticon-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-services-box">
-                    <div class="icon">
-                        <i class="flaticon-document"></i>
-                    </div>
-                    <h3>Managed Analytics</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum </p>
-                    <div class="services-btn">
-                        <a routerLink="/services-details" class="services-btn-one">Read More <i class="flaticon-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-services-box">
-                    <div class="icon">
-                        <i class="flaticon-chart"></i>
-                    </div>
-                    <h3>Business Intelligence</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum </p>
-                    <div class="services-btn">
-                        <a routerLink="/services-details" class="services-btn-one">Read More <i class="flaticon-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-services-box">
-                    <div class="icon">
-                        <i class="flaticon-science"></i>
-                    </div>
-                    <h3>Data Science</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum </p>
-                    <div class="services-btn">
-                        <a routerLink="/services-details" class="services-btn-one">Read More <i class="flaticon-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-services-box">
-                    <div class="icon">
-                        <i class="flaticon-data-management"></i>
-                    </div>
-                    <h3>Data Management</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum </p>
+                    <h3>{{this.datas.title}}</h3>
+                    <p>{{this.datas.describe}}</p>
                     <div class="services-btn">
                         <a routerLink="/services-details" class="services-btn-one">Read More <i class="flaticon-right"></i></a>
                     </div>
@@ -98,18 +38,17 @@
         <div class="row align-items-center">
             <div class="col-lg-6 col-md-12">
                 <div class="software-content">
-                    <span>Our Working Process</span>
-                    <h2>Software Developement Services</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices Lorem Ipsum is simply dummy text.</p>
+                    <h2>Developement Services</h2>
+                    <p>
+                        Les avantages apportés à une application avec les points clés mentionnés incluent une expérience utilisateur plus fluide et optimisée grâce à la création d'applications web natives, une intégration aisée avec d'autres applications tierces grâce à la création d'API, une personnalisation des fonctionnalités répondant aux besoins spécifiques des utilisateurs, un stockage efficace et structuré des données avec une base de données SQL ou NoSQL, une protection des données et la confidentialité des utilisateurs grâce à la sécurité des requêtes HTTP, et enfin une compatibilité avec les dernières technologies et les meilleures pratiques du marché grâce à une mise à jour régulière des applications web.
+                    </p>
                     <ul class="features-list">
-                        <li><span>Software Development</span></li>
-                        <li><span>Automatic Optimization</span></li>
-                        <li><span>Applicatication Services</span></li>
-                        <li><span>IT Security Services</span></li>
-                        <li><span>Data Analytics</span></li>
-                        <li><span>System Integration Service</span></li>
-                        <li><span>Help Desk Services</span></li>
-                        <li><span>API Integration Service</span></li>
+                        <li *ngFor="let dataInfoSoftwares of dataInfoSoftware">
+                            <span>
+                                {{ this.dataInfoSoftwares.title }}
+                            </span>
+                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -122,26 +61,3 @@
     </div>
 </section>
 
-<section class="subscribe-section pb-100">
-    <div class="container">
-        <div class="subscribe-content-area mb-0">
-            <div class="row align-items-center">
-                <div class="col-lg-6 col-md-6">
-                    <div class="subscribe-image">
-                        <img src="assets/img/subscribe.png" alt="image">     
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="subscribe-content">
-                        <h2>Don’t Miss Our News And Updates</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
-                    </div>
-                    <form class="newsletter-form">
-                        <input type="email" class="input-newsletter" placeholder="Enter your email" name="EMAIL">
-                        <button type="submit">Subscribe Now</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>

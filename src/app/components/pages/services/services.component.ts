@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TableauInfoServiceService } from 'src/app/core/service/tableauInfoPage/tableau-info-service.service';
 
 @Component({
   selector: 'app-services',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServicesComponent implements OnInit {
 
-  constructor() { }
+    data!: Array<unknown>;
+    dataInfoSoftware!: Array<unknown>;
 
-  ngOnInit(): void {
-  }
+    constructor(private tis: TableauInfoServiceService) { }
+
+    ngOnInit(): void {
+        this.data = this.tis.servicePageHome;
+        this.dataInfoSoftware = this.tis.tableauServicePageHome;
+    }
 
 }

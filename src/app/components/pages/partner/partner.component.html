@@ -14,7 +14,7 @@
     </div>
 </div>
 
-<div class="partner-area">
+<!-- <div class="partner-area">
     <div class="container">
         <div class="partner-slider owl-carousel owl-theme">
             <div class="partner-item">
@@ -37,42 +37,45 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+<br>
+<br>
 
 <section class="partner-section pt-100 pb-70">
     <div class="container">
         <div class="partner-title">
-            <span>Customer</span>
-            <h3>Discover Customer Successful Stories</h3>
+            <!-- <span>Customer</span> -->
+            <h3>Optimisez votre workflow avec notre application révolutionnaire : des outils tout-en-un pour une productivité maximale</h3>
         </div>
         <div class="partner-list">
             <div class="partner-item">
-                <a routerLink="/partner"><img src="assets/img/partner/1.png" alt="image"></a>
+                <a routerLink="/partner"><img src="assets/img/partner/html5img.png" alt="image"></a>
             </div>
             <div class="partner-item">
-                <a routerLink="/partner"><img src="assets/img/partner/2.png" alt="image"></a>
+                <a routerLink="/partner"><img src="assets/img/partner/css-3.webp" alt="image"></a>
             </div>
             <div class="partner-item">
-                <a routerLink="/partner"><img src="assets/img/partner/3.png" alt="image"></a>
+                <a routerLink="/partner"><img src="assets/img/partner/sass.svg" alt="image"></a>
             </div>
             <div class="partner-item">
-                <a routerLink="/partner"><img src="assets/img/partner/4.png" alt="image"></a>
+                <a routerLink="/partner"><img src="assets/img/partner/imageJavascript.png" alt="image"></a>
             </div>
             <div class="partner-item">
-                <a routerLink="/partner"><img src="assets/img/partner/5.png" alt="image"></a>
+                <a routerLink="/partner"><img src="assets/img/partner/imagesNodeJs.png" alt="image"></a>
             </div>
             <div class="partner-item">
-                <a routerLink="/partner"><img src="assets/img/partner/6.png" alt="image"></a>
+                <a routerLink="/partner"><img src="assets/img/partner/ExpressJS.jpg" alt="image"></a>
             </div>
             <div class="partner-item">
-                <a routerLink="/partner"><img src="assets/img/partner/7.png" alt="image"></a>
+                <a routerLink="/partner"><img src="assets/img/partner/typescript.svg" alt="image"></a>
             </div>
             <div class="partner-item">
-                <a routerLink="/partner"><img src="assets/img/partner/8.png" alt="image"></a>
+                <a routerLink="/partner"><img src="assets/img/partner/angular.png" alt="image"></a>
             </div>
             <div class="partner-item">
-                <a routerLink="/partner"><img src="assets/img/partner/1.png" alt="image"></a>
+                <a routerLink="/partner"><img src="assets/img/partner/Cest-quoi-le-référencement-SEO.jpg" alt="image"></a>
             </div>
+
         </div>
     </div>
 
@@ -86,17 +89,17 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6">
                     <div class="subscribe-image">
-                        <img src="assets/img/subscribe.png" alt="image">     
+                        <img src="assets/img/contact.png" alt="image">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="subscribe-content">
-                        <h2>Don’t Miss Our News And Updates</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
+                        <p class="fw-bold text-dark">Ne manquez pas nos nouvelles sur l'évolution des outils en HTML5, CSS, SCSS, JS, NodeJS, Angular, NoSQL, MySQL et SEO !</p>
+                        <p> Nous sommes constamment à la recherche des dernières technologies et nous les intégrons dans nos outils de travail. Nous vous tiendrons informé(e) de chaque mise à jour pour que vous puissiez profiter pleinement de ces avancées technologiques !</p>
                     </div>
-                    <form class="newsletter-form">
-                        <input type="email" class="input-newsletter" placeholder="Enter your email" name="EMAIL">
-                        <button type="submit">Subscribe Now</button>
+                    <form [formGroup]="sendMessage" class="newsletter-form">
+                        <input type="email" class="input-newsletter" formControlName="email" placeholder="Enter your email" name="EMAIL">
+                        <button type="submit" [className]="this.sendMessage.valid ? 'submit-btn' : 'submit-btn-notValid' " [disabled]="!this.sendMessage.valid" (click)="addUserNewLester()">Subscribe Now</button>
                     </form>
                 </div>
             </div>
