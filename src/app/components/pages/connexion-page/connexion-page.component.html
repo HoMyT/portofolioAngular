@@ -1,6 +1,6 @@
 
-<div class="main-banner-four">
-    <div class="d-table">
+<!-- <div class="main-banner-four"> -->
+    <!-- <div class="d-table">
         <div class="d-table-cell">
             <div class="container-fluid">
                 <div class="row align-items-center">
@@ -13,72 +13,68 @@
 
                     </div>
                     <div class="col-lg-6 col-md-12">
-                        <!-- <div class="banner-image">
+                        <div class="banner-image">
                             <img src="assets/img/home-four/DALL·E 2023-03-30 15.53.41 - Dans le theme data analyst des images d'equipe developpeur d'application web .png" alt="image">
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
     <!-- <div class="creative-shape" style="border: 1px solid red!important; height:250px!important">
         <img src="assets/img/main-banner-shape/home-shape-4.png" alt="main-image">
     </div> -->
 
-    <div class="lines">
+    <!-- <div class="lines">
         <div class="line"></div>
         <div class="line"></div>
         <div class="line"></div>
     </div>
 
-</div>
+</div> -->
 
 
 <section class="tab-section ptb-100">
     <div class="container">
         <div class="tab solutions-list-tab">
             <ul class="tabs">
-                <li><a href="#"><span>Research & Solution</span></a></li>
-                <li><a href="#"><span>SEO & Strategy</span></a></li>
-                <li><a href="#"><span>Application Web</span></a></li>
-                <li><a href="#"><span>API REST</span></a></li>
+                <li><a href="#"><span>Connection</span></a></li>
+                <li><a href="#"><span>Inscription</span></a></li>
             </ul>
             <div class="tab_content">
                 <div class="tabs_item">
                     <div class="row align-items-center">
-                        <div class="col-lg-7 col-md-12">
+                        <div class="col-lg-12 col-md-12">
                             <div class="tab-solution-content">
-                                <h3>Enterprise AI & Data Platform Solutions</h3>
-                                <p>
-                                    Nous devons comprendre vos besoins et vos attentes vis-à-vis de l'application. Pour cela, nous pouvons organiser des enquêtes ou des sondages pour collecter vos feedbacks et comprendre les fonctionnalités que vous aimeriez avoir ou celles qui ne sont pas satisfaisantes pour vous.
-                                </p>
-                                <ul class="tab-list">
-                                    <li>
-                                        <i class="flaticon-tick-1"></i>
-                                        Nous allons analyser les données d'utilisation de l'application pour identifier les points de friction et les fonctionnalités les plus et moins utilisées. En utilisant ces données, nous pourrons identifier les aspects de l'application qui ont besoin d'améliorations et ainsi proposer des solutions qui répondent à vos besoins spécifiques.
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-tick-1"></i>
-                                        Nous proposerons des solutions innovantes pour améliorer l'expérience utilisateur de l'application. Cela peut inclure des changements dans la conception de l'interface utilisateur, l'ajout de fonctionnalités, la simplification du processus de commande, ou toute autre modification qui peut répondre à vos besoins.
-                                        </li>
-                                    <li>
-                                        <i class="flaticon-tick-1"></i>
-                                        Nous testerons les solutions proposées auprès des clients pour nous assurer qu'elles répondent bien à vos attentes et qu'elles améliorent votre expérience utilisateur. Les résultats de ces tests nous permettront également d'identifier les domaines qui nécessitent encore des améliorations et de continuer à affiner les solutions proposées.
-                                    </li>
-                                </ul>
-                                <div class="tab-btn">
-                                    <a class="default-btn" href="#">Read More <span></span></a>
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="contact-form">
+                                        <h3>Connexion</h3>
+                                        <form [formGroup]="connexionUser" id="contactForm">
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="form-group">
+                                                        <input type="email" name="email" id="email" class="form-control" formControlName="email" placeholder="ex: youremail@email.com">
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="form-group">
+                                                        <input type="password" name="password" id="password" class="form-control" formControlName="password" placeholder="Password">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-12 col-md-12">
+                                                    <button (click)="connexion()" type="submit" [className]="this.connexionUser.valid ? 'submit-btn' : 'submit-btn-notValid' " [disabled]="!this.connexionUser.valid">Connexion</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-5 col-md-12">
-                            <div class="tab-image">
-                                <img src="assets/img/tab-solution.png" alt="image">
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="tabs_item">
@@ -109,93 +105,6 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-5 col-md-12">
-                            <div class="tab-image">
-                                <img src="assets/img/tab-solution.png" alt="image">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tabs_item">
-                    <div class="row align-items-center">
-                        <div class="col-lg-7 col-md-12">
-                            <div class="tab-solution-content">
-                                <h3>Application Web</h3>
-                                <p>
-                                    Les applications web offrent une variété d'avantages par rapport aux sites web, notamment des fonctionnalités hors ligne, une expérience utilisateur améliorée, des notifications en temps réel, des mises à jour automatiques et une sécurité renforcée, entre autres.
-                                </p>
-                                <ul class="tab-list">
-                                    <li>
-                                        <i class="flaticon-tick-1"></i>
-                                        Notifications en temps réel : les applications web peuvent envoyer des notifications en temps réel à l'utilisateur, l'informant des mises à jour importantes ou des événements pertinents.
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-tick-1"></i>
-                                        Gestion des données : les applications web peuvent stocker des données localement sur le périphérique de l'utilisateur, ce qui peut améliorer les temps de réponse et la fiabilité des données.
-                                        </li>
-                                    <li>
-                                        <i class="flaticon-tick-1"></i>
-                                        Disponibilité multi-plateforme : les applications web peuvent être développées pour être compatibles avec une variété de plateformes, y compris les ordinateurs de bureau, les smartphones et les tablettes.
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-tick-1"></i>
-                                        Intégration avec d'autres applications : les applications web peuvent être conçues pour s'intégrer avec d'autres applications, permettant aux utilisateurs de partager facilement des données entre les applications.
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-tick-1"></i>
-                                        Sécurité renforcée : les applications web peuvent être conçues pour être plus sécurisées que les sites web, avec des mécanismes de protection contre les attaques et les vulnérabilités.
-                                    </li>
-                                </ul>
-                                <div class="tab-btn">
-                                    <a class="default-btn" href="#">Read More <span></span></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-5 col-md-12">
-                            <div class="tab-image">
-                                <img src="assets/img/tab-solution.png" alt="image">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tabs_item">
-                    <div class="row align-items-center">
-                        <div class="col-lg-7 col-md-12">
-                            <div class="tab-solution-content">
-                                <h3>API REST</h3>
-                                <p>
-                                    Une API REST est un choix judicieux pour votre application web car elle offre une meilleure séparation des préoccupations, une meilleure sécurité, une meilleure évolutivité, une meilleure portabilité et une meilleure expérience utilisateur
-                                </p>
-                                <ul class="tab-list">
-                                    <li>
-                                        <i class="flaticon-tick-1"></i>
-                                        Meilleure sécurité : en utilisant une API REST, vous pouvez mettre en place des contrôles d'accès et des autorisations granulaires pour vos données, ce qui rend votre application plus sécurisée que si vous communiquiez directement avec la base de données.
-                                        </li>
-                                    <li>
-                                        <i class="flaticon-tick-1"></i>
-                                        Meilleure évolutivité : en utilisant une API REST, vous pouvez facilement ajouter de nouvelles fonctionnalités et de nouveaux endpoints pour prendre en charge de nouvelles fonctionnalités ou de nouveaux cas d'utilisation, sans avoir à modifier directement la base de données ou l'interface utilisateur.
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-tick-1"></i>
-                                        Meilleure portabilité : en utilisant une API REST, votre application est plus facilement portable vers d'autres plateformes ou architectures, car l'API REST peut être consommée par différentes applications et clients via des requêtes HTTP standard.
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-tick-1"></i>
-                                        Meilleure expérience utilisateur : en utilisant une API REST, vous pouvez fournir une expérience utilisateur plus réactive et plus rapide, car les clients peuvent interroger l'API REST directement et ne sont pas obligés de charger des pages web entières à chaque requête.
-                                    </li>
-                                </ul>
-                                <div class="tab-btn">
-                                    <a class="default-btn" href="#">Read More <span></span></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-5 col-md-12">
-                            <div class="tab-image">
-                                <img src="assets/img/tab-solution.png" alt="image">
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

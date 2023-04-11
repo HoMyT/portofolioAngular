@@ -1,10 +1,5 @@
-.main-banner-four{
-    height: 350px;
-}
 
-.tab-section{
-    background-color: #f6f5fb;
-}
+
 
 input, textarea, h3 {
     margin: 1% 0 1% 0;
@@ -15,6 +10,18 @@ input, textarea, h3 {
     width: 100%;
     background-color: #dddddd;
     border: 1px solid #dddddd;
+    color: #ffffff;
+    padding: 12px 50px;
+    font-size: 15px;
+    font-weight: 400;
+    transition: 0.5s;
+}
+
+.submit-btn {
+    display: inline-block;
+    width: 100%;
+    background-color: #00b0ee;
+    border: 1px solid #00b0ee;
     color: #ffffff;
     padding: 12px 50px;
     font-size: 15px;

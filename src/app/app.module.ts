@@ -31,10 +31,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ConnexionPageComponent } from './components/pages/connexion-page/connexion-page.component';
 import { InterceptorReponseRequestService } from './core/interceptor/interceptor-reponse-request.service';
+import { ProfilUserComponent } from './components/pages/profil-user/profil-user.component';
+import { TokenInterceptorService } from './core/token-interceptor/token-interceptor.service';
 
 
 @NgModule({
-  declarations: [
+    declarations: [
     AppComponent,
     PreloaderComponent,
     NavbarComponent,
@@ -57,7 +59,8 @@ import { InterceptorReponseRequestService } from './core/interceptor/interceptor
     BlogDetailsComponent,
     BlogRightSidebarComponent,
     ErrorComponent,
-    ConnexionPageComponent
+    ConnexionPageComponent,
+    ProfilUserComponent
     ],
     imports: [
     BrowserModule,
@@ -69,6 +72,11 @@ import { InterceptorReponseRequestService } from './core/interceptor/interceptor
         {
             provide: HTTP_INTERCEPTORS,
             useClass: InterceptorReponseRequestService,
+            multi: true
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: TokenInterceptorService,
             multi: true
         }
     ],
