@@ -3165,7 +3165,7 @@ Page Title Area CSS
     z-index: 1;
     height: 500px;
     background: {
-        image: url(assets/img/page-title-bg.jpg);
+        // image: url(assets/img/page-title-bg.jpg);
         position: center center;
         size: cover;
         repeat: no-repeat;
@@ -3249,9 +3249,9 @@ Page Title Area CSS
 .item-bg3 {
     background-image: url(assets/img/page-title-bg-4.jpg);
 }
-.item-bg4 {
-    background-image: url(assets/img/page-title-bg-5.jpg);
-}
+// .item-bg4 {
+    // background-image: url(assets/img/page-title-bg-5.jpg);
+// }
 
 /*================================================
 Team Section CSS

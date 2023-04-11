@@ -19,6 +19,7 @@ import { BlogRightSidebarComponent } from './components/pages/blog-right-sidebar
 import { BlogDetailsComponent } from './components/pages/blog-details/blog-details.component';
 import { ErrorComponent } from './components/pages/error/error.component';
 import { ConnexionPageComponent } from './components/pages/connexion-page/connexion-page.component';
+import { ProfilUserComponent } from './components/pages/profil-user/profil-user.component';
 
 
 const routes: Routes = [
@@ -39,7 +40,7 @@ const routes: Routes = [
     {path: 'cart', component: CartComponent},
     {path: 'checkout', component: CheckoutComponent},
     {path: 'contact', component: ContactComponent},
-
+    {path: 'profil', component: ProfilUserComponent},
     {path: 'connexion', component: ConnexionPageComponent},
     {path: '**', component: ErrorComponent}
 ];

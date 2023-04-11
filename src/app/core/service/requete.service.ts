@@ -10,6 +10,14 @@ export class RequeteService {
 
     constructor(private http: HttpClient) { }
     url: string = "http://localhost:3000/";
+
+    ConnexionUser(email:string, password: string): Observable<any>{
+        return this.http.post<any>(`${this.url}users/connexion`, {email, password})
+        .pipe(
+            catchError(this.handleError)
+        )
+    }
+
     getMessageInfo(name:string, email:string, phone: number, subject:string, message:string): Observable<ServicesComponent>{
         return this.http.post<ServicesComponent>(`${this.url}email`, {name, email, phone, subject, message})
         .pipe(
@@ -24,6 +32,33 @@ export class RequeteService {
         )
     }
 
+    LogoEntreprise(photo: unknown): Observable<any>{
+        return this.http.post<any>(`${this.url}logo-entreprise/`, photo)
+        .pipe(
+            catchError(this.handleError)
+        )
+    }
+
+    getAllEmail(): Observable<any[]>{
+        return this.http.get<any>(`${this.url}email/getEmail`)
+        .pipe(
+            catchError(this.handleError)
+        )
+    }
+
+    createProjectUser(name_project: string, descriptif_project:string, type_project:string): Observable<unknown>{
+        return this.http.post(`${this.url}project-user`, {name_project, descriptif_project, type_project})
+        .pipe(
+            catchError(this.handleError)
+        )
+    }
+
+    getInfoUser(): Observable<any[]>{
+        return this.http.get<any>(`${this.url}users/info-project`)
+        .pipe(
+            catchError(this.handleError)
+        )
+    }
 
 private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
@@ -33,9 +68,9 @@ private handleError(error: HttpErrorResponse) {
         // The backend returned an unsuccessful response code.
         // The response body may contain clues as to what went wrong.
         console.error(
-        `Backend returned code ${error.status}, body was: `, error.error.message);
+        `Backend returned code ${error.status}, body was: `, error.error);
     }
     // Return an observable with a user-facing error message.
-        return throwError(() => new Error(error.error.message));
+        return throwError(() => new Error(error.error));
     }
 }
