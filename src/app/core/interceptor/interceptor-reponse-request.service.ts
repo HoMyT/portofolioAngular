@@ -9,14 +9,17 @@ export class InterceptorReponseRequestService implements HttpInterceptor {
     constructor() { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        return next.handle(req)
-        .pipe(
-            tap(event => {
-            // Traitez la réponse de l'API ici
-            if (event instanceof HttpResponse) {
-                    alert(event.body.message);
-                }
-            })
-        );
+        if (req.method === 'POST') {
+            return next.handle(req)
+                .pipe(
+                    tap(event => {
+                        // Traitez la réponse de l'API ici
+                        if (event instanceof HttpResponse) {
+                            alert(event.body.message);
+                        }
+                    })
+                );
+        }
+        return next.handle(req);
     }
 }

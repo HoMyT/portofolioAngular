@@ -14,104 +14,51 @@
     </div>
 </div>
 
-<section *ngIf="this.connected == false">
-    <app-connexion-page></app-connexion-page>
-</section>
 
-<section *ngIf="this.connected == true" class="blog-details-area ptb-100">
+<section class="blog-details-area ptb-100">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-12">
                 <div class="blog-details-desc">
                     <div class="article-image">
-                        <img src="assets/img/blog-details/2.jpg" alt="image">
+                        <img src="{{this.logoEntreprise}}" alt="image">
                     </div>
                     <form [formGroup]="sendImg">
                         <input type="file" name="photo" formControlName="image" required />
                         <button (click)="onSubmit()" type="submit" [disabled]="!sendImg.valid">Envoyer la photo</button>
                     </form>
-                    <div class="article-content">
-                        <h3>Create Your Project</h3>
-                        <!-- <p>Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in  sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-                        <blockquote class="wp-block-quote">
-                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                            <cite>Tom Cruise</cite>
-                        </blockquote>
-                        <p>Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing.</p> -->
-                        <ul class="wp-block-gallery columns-3">
-                            <li class="blocks-gallery-item">
-                                <figure>
-                                    <img src="assets/img/blog-details/1.jpg" alt="image">
-                                </figure>
-                            </li>
-                            <li class="blocks-gallery-item">
-                                <figure>
-                                    <img src="assets/img/blog-details/2.jpg" alt="image">
-                                </figure>
-                            </li>
-                            <li class="blocks-gallery-item">
-                                <figure>
-                                    <img src="assets/img/blog-details/3.jpg" alt="image">
-                                </figure>
-                            </li>
-                        </ul>
-
-                    </div>
-                    <div class="comments-area">
-                        <div class="comment-respond">
-                            <h3 class="comment-reply-title">Create Your Project</h3>
-                            <form [formGroup]="sendProject" class="comment-form">
-                                <p class="comment-notes"><span id="email-notes">Your email address will not be published.</span>Required fields are marked <span class="required">*</span></p>
-                                <p class="comment-form-author">
-                                    <label>Name Of Project<span class="required">*</span></label>
-                                    <input formControlName="name_project" type="text" id="author" name="author" required="required">
-                                </p>
-                                <p class="comment-form-email">
-                                    <label>Type Of Project <span class="required">*</span></label>
-                                    <input type="text" formControlName="type_project" required="required">
-                                </p>
-                                <p class="comment-form-comment">
-                                    <label>Descriptif Of Project</label>
-                                    <textarea formControlName="descriptif_project" cols="45" rows="5" maxlength="65525" required="required"></textarea>
-                                </p>
-
-                                <p class="form-submit">
-                                    <button (click)="createProject()" type="submit" [className]="this.sendProject.valid ? 'submit-btn' : 'submit-btn-notValid' " [disabled]="!this.sendProject.valid">Submit</button>
-                                    <!-- <input type="submit" name="submit" id="submit" class="submit" value="Post Comment"> -->
-                                </p>
-                            </form>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-12">
                 <aside class="widget-area" id="secondary">
                     <section class="widget widget_plamb_posts_thumb">
                         <h3 class="widget-title">My Project</h3>
-                        <article class="item">
-                            <a routerLink="/blog-details" class="thumb"><span class="fullimage cover bg1" role="img"></span></a>
-                            <div class="info">
-                                <time class="2020-06-30">June 10, 2020</time>
-                                <h4 class="title usmall"><a routerLink="/blog-details">Making Peace With The Feast Or Famine Of Freelancing</a></h4>
+                        <article *ngFor="let dataProjectUSers of dataProjectUSer" class="item">
+                            <div class="info w-100">
+                                <h4 class="title usmall">
+                                    <a (click)="getOneProject(this.dataProjectUSers.uuid_project)"> {{this.dataProjectUSers.name_project}} </a>
+                                </h4>
+                            </div>
+                            <div *ngIf="this.noProject == true">
+                                <p>Vous n'avez aucun project pour le moment</p>
                             </div>
                         </article>
-                        <article class="item">
+                        <!-- <article class="item">
                             <a routerLink="/blog-details" class="thumb"><span class="fullimage cover bg2" role="img"></span></a>
                             <div class="info">
                                 <time class="2020-06-30">June 21, 2020</time>
                                 <h4 class="title usmall"><a routerLink="/blog-details">I Used The Web For A Day On A 50 MB Budget</a></h4>
                             </div>
-                        </article>
-                        <article class="item">
+                        </article> -->
+                        <!-- <article class="item">
                             <a routerLink="/blog-details" class="thumb"><span class="fullimage cover bg3" role="img"></span></a>
                             <div class="info">
                                 <time class="2020-06-30">June 30, 2020</time>
                                 <h4 class="title usmall"><a routerLink="/blog-details">How To Create A Responsive Popup Gallery?</a></h4>
                             </div>
-                        </article>
+                        </article> -->
                     </section>
-                    <section class="widget widget_categories">
+                    <!-- <section class="widget widget_categories">
                         <h3 class="widget-title">Categories</h3>
                         <ul>
                             <li><a routerLink="/">Business</a></li>
@@ -120,8 +67,8 @@
                             <li><a routerLink="/">Tips</a></li>
                             <li><a routerLink="/">Uncategorized</a></li>
                         </ul>
-                    </section>
-                    <section class="widget widget_tag_cloud">
+                    </section> -->
+                    <!-- <section class="widget widget_tag_cloud">
                         <h3 class="widget-title">Tags</h3>
                         <div class="tagcloud section-bottom">
                             <a routerLink="/">IT <span class="tag-link-count"> (3)</span></a>
@@ -133,8 +80,93 @@
                             <a routerLink="/">Marketing <span class="tag-link-count"> (1)</span></a>
                             <a routerLink="/">Tips<span class="tag-link-count"> (2)</span></a>
                         </div>
-                    </section>
+                    </section> -->
                 </aside>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<section class="tab-section ptb-100">
+    <div class="container">
+        <div class="tab solutions-list-tab">
+            <ul class="tabs">
+                <li><a href="#"><span>Crée un projet</span></a></li>
+                <li><a href="#"><span>Parametre</span></a></li>
+            </ul>
+            <div class="tab_content">
+                <div class="tabs_item">
+                    <div class="row align-items-center">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="tab-solution-content">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="contact-form">
+                                        <h3>Crée un projet</h3>
+                                        <div class="comments-area">
+                                            <div class="comment-respond">
+                                                <h3 class="comment-reply-title">Create Your Project</h3>
+                                                <form [formGroup]="sendProject" class="comment-form">
+                                                    <p class="comment-notes"><span id="email-notes">Your email address will not be published.</span>Required fields are marked <span class="required">*</span></p>
+                                                    <p class="comment-form-author">
+                                                        <label>Name Of Project<span class="required">*</span></label>
+                                                        <input formControlName="name_project" type="text" id="author" name="author" required="required">
+                                                    </p>
+                                                    <p class="comment-form-email">
+                                                        <label>Type Of Project <span class="required">*</span></label>
+                                                        <input type="text" formControlName="type_project" required="required">
+                                                    </p>
+                                                    <p class="comment-form-comment">
+                                                        <label>Descriptif Of Project</label>
+                                                        <textarea formControlName="descriptif_project" cols="45" rows="5" maxlength="65525" required="required"></textarea>
+                                                    </p>
+                                                    <p class="form-submit">
+                                                        <button (click)="createProject()" type="submit" [className]="this.sendProject.valid ? 'submit-btn' : 'submit-btn-notValid' " [disabled]="!this.sendProject.valid">Submit</button>
+                                                    </p>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tabs_item">
+                    <div class="row align-items-center">
+                        <div class="col-lg-7 col-md-12">
+                            <div class="tab-solution-content">
+                                <h3>SEO (Search Engine Origin) Solution</h3>
+                                <p>
+                                    Le SEO est une stratégie clé pour améliorer la visibilité et l'acquisition d'utilisateurs pour votre application dès sa création, ce qui peut avoir un impact significatif sur sa croissance et son succès à long terme.
+                                </p>
+                                <ul class="tab-list">
+                                    <li>
+                                        <i class="flaticon-tick-1"></i>
+                                        Visibilité en ligne : le SEO permet de mieux positionner votre application dans les résultats de recherche des moteurs de recherche, ce qui permet de la rendre plus visible auprès des utilisateurs et d'attirer un trafic plus qualifié
+                                </li>
+                                    <li>
+                                        <i class="flaticon-tick-1"></i>
+                                        Acquisition de nouveaux utilisateurs : en étant mieux positionnée dans les résultats de recherche, votre application sera plus facilement trouvée par de nouveaux utilisateurs, qui pourront la découvrir et l'essayer.
+                                    </li>
+                                    <li>
+                                        <i class="flaticon-tick-1"></i>
+                                        Meilleure expérience utilisateur : le SEO permet d'optimiser le contenu de votre application pour les utilisateurs, en mettant en avant les fonctionnalités les plus importantes et en les rendant plus accessibles.
+                                        </li>
+                                </ul>
+                                <div class="tab-btn">
+                                    <a class="default-btn" href="#">Read More <span></span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
