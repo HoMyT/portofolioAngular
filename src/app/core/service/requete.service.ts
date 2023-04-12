@@ -9,7 +9,10 @@ import { catchError } from 'rxjs/operators';
 export class RequeteService {
 
     constructor(private http: HttpClient) { }
-    url: string = "http://localhost:3000/";
+    // Production
+    url: string = "https://get-evolutif.xyz/v2/";
+    // Developpment
+    // url: string = "http://localhost:3000/v2/";
 
     ConnexionUser(email:string, password: string): Observable<any>{
         return this.http.post<any>(`${this.url}users/connexion`, {email, password})
@@ -53,7 +56,14 @@ export class RequeteService {
         )
     }
 
-    getInfoUser(): Observable<any[]>{
+    getLogoEntreprise(): Observable<any[]>{
+        return this.http.get<any>(`${this.url}users/logo-entreprise`)
+        .pipe(
+            catchError(this.handleError)
+        )
+    }
+
+    getInfoProjectUser(): Observable<any[]>{
         return this.http.get<any>(`${this.url}users/info-project`)
         .pipe(
             catchError(this.handleError)

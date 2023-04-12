@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 import { RequeteService } from 'src/app/core/service/requete.service';
 
@@ -12,7 +13,9 @@ export class ProfilUserComponent {
     image: File;
     sendImg!: FormGroup;
     sendProject!: FormGroup;
-    connected!: boolean;
+    dataProjectUSer!: Array<unknown>
+    noProject: boolean = false;
+    logoEntreprise!: unknown;
 
     ngOnInit(): void{
         this.sendImg = this.fb.group({
@@ -25,13 +28,24 @@ export class ProfilUserComponent {
             type_project: [null, Validators.required]
         })
 
-        if (localStorage.getItem('token')) {
-            this.connected = true
-        } else {
-            this.connected = false
-        }
-        this.ras.getInfoUser().subscribe(data => {
+        this.ras.getInfoProjectUser().subscribe(data => {
+            this.dataProjectUSer = data;
+            console.log(this.dataProjectUSer)
+            if (this.dataProjectUSer.length == 0) {
+                this.noProject = true;
+            }
+            return this.dataProjectUSer
+        }, err => {
+            return err
+        })
+
+        this.ras.getLogoEntreprise().subscribe(data=> {
             console.log(data)
+            if (data.length > 0) {
+                this.logoEntreprise = data.map(obj => obj.pathImg);
+            } else {
+                this.logoEntreprise = "assets/img/blog-details/2.jpg";
+            }
         }, err => {
             console.log(err)
         })
@@ -45,5 +59,17 @@ export class ProfilUserComponent {
     }
     createProject(){
         this.ras.createProjectUser(this.sendProject.value.name_project, this.sendProject.value.descriptif_project, this.sendProject.value.type_project).subscribe(res => { return res }, err => { return err })
+    }
+    getOneProject(uuid: string){
+        console.log(uuid)
+    }
+    ngAfterViewInit(): void{
+        // const auth = document.querySelector('#auth');
+        // console.log(auth)
+        // if (!auth && !localStorage.getItem('token')) {
+        //     window.location.reload();
+        //     console.log('non')
+        // }
+
     }
 }

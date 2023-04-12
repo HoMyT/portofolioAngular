@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RequeteService } from 'src/app/core/service/requete.service';
 
 @Component({
@@ -9,8 +10,7 @@ import { RequeteService } from 'src/app/core/service/requete.service';
 })
 export class ConnexionPageComponent {
     connexionUser!: FormGroup;
-    connected!: boolean;
-    constructor(private fb: FormBuilder, private ras: RequeteService){}
+    constructor(private fb: FormBuilder, private ras: RequeteService, private router: Router){}
     ngOnInit(): void {
         this.connexionUser = this.fb.group({
             email: [null, Validators.required],
@@ -20,18 +20,15 @@ export class ConnexionPageComponent {
     connexion(){
         if (this.connexionUser.valid) {
             const objConnexion = { email: this.connexionUser.value.email, password: this.connexionUser.value.password };
-            console.log(objConnexion)
             this.ras.ConnexionUser(this.connexionUser.value.email, this.connexionUser.value.password).subscribe(message => {
                 console.log(message)
                 let token = JSON.stringify(message.token)
                 try {
                     localStorage.setItem('token', token)
-                    this.connected = true;
                 } catch (error) {
-                    this.connected = false;
                     console.log(error)
                 }
-                window.location.reload();
+                this.router.navigateByUrl('/profil')
             }, err => {
                 console.log(err)
             })

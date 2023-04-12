@@ -34,6 +34,9 @@ import { InterceptorReponseRequestService } from './core/interceptor/interceptor
 import { ProfilUserComponent } from './components/pages/profil-user/profil-user.component';
 import { TokenInterceptorService } from './core/token-interceptor/token-interceptor.service';
 
+import { LocationStrategy, PathLocationStrategy  } from '@angular/common';
+
+
 
 @NgModule({
     declarations: [
@@ -78,6 +81,10 @@ import { TokenInterceptorService } from './core/token-interceptor/token-intercep
             provide: HTTP_INTERCEPTORS,
             useClass: TokenInterceptorService,
             multi: true
+        },
+        {
+            provide: LocationStrategy,
+            useClass: PathLocationStrategy
         }
     ],
     bootstrap: [AppComponent]

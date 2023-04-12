@@ -16,7 +16,9 @@ input, textarea, h3 {
     font-weight: 400;
     transition: 0.5s;
 }
-
+a {
+    cursor: pointer;
+}
 .submit-btn {
     display: inline-block;
     width: 100%;
