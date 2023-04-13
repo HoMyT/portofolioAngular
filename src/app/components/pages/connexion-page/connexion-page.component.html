@@ -46,28 +46,39 @@
                 <div class="tabs_item">
                     <div class="row align-items-center">
                         <div class="col-lg-7 col-md-12">
-                            <div class="tab-solution-content">
-                                <h3>SEO (Search Engine Origin) Solution</h3>
-                                <p>
-                                    Le SEO est une stratégie clé pour améliorer la visibilité et l'acquisition d'utilisateurs pour votre application dès sa création, ce qui peut avoir un impact significatif sur sa croissance et son succès à long terme.
-                                </p>
-                                <ul class="tab-list">
-                                    <li>
-                                        <i class="flaticon-tick-1"></i>
-                                        Visibilité en ligne : le SEO permet de mieux positionner votre application dans les résultats de recherche des moteurs de recherche, ce qui permet de la rendre plus visible auprès des utilisateurs et d'attirer un trafic plus qualifié
-                                </li>
-                                    <li>
-                                        <i class="flaticon-tick-1"></i>
-                                        Acquisition de nouveaux utilisateurs : en étant mieux positionnée dans les résultats de recherche, votre application sera plus facilement trouvée par de nouveaux utilisateurs, qui pourront la découvrir et l'essayer.
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-tick-1"></i>
-                                        Meilleure expérience utilisateur : le SEO permet d'optimiser le contenu de votre application pour les utilisateurs, en mettant en avant les fonctionnalités les plus importantes et en les rendant plus accessibles.
-                                        </li>
-                                </ul>
-                                <div class="tab-btn">
-                                    <a class="default-btn" href="#">Read More <span></span></a>
-                                </div>
+                            <div class="contact-form">
+                                <h3>Inscription</h3>
+                                <form [formGroup]="inscriptionUser" id="contactForm">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-group">
+                                                <input type="email" name="email" id="email" class="form-control" formControlName="email" placeholder="ex: youremail@email.com">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-group">
+                                                <input type="password" name="password" id="password" class="form-control" formControlName="password" placeholder="Password">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" name="text" id="text" class="form-control" formControlName="name" placeholder="Your name">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" name="last_name" id="last_name" class="form-control" formControlName="last_name" placeholder="Your last name">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12">
+                                            <button (click)="inscription()" type="submit" [className]="this.connexionUser.valid ? 'submit-btn' : 'submit-btn-notValid' " [disabled]="!this.inscriptionUser.valid">Inscription</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
 

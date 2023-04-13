@@ -23,7 +23,7 @@ import { ProjectsComponent } from './components/pages/projects/projects.componen
 import { ProjectsDetailsComponent } from './components/pages/projects-details/projects-details.component';
 import { ProductsDetailsComponent } from './components/pages/products-details/products-details.component';
 import { BlogGridComponent } from './components/pages/blog-grid/blog-grid.component';
-import { BlogDetailsComponent } from './components/pages/blog-details/blog-details.component';
+import { BlogDetailsComponent } from './components/pages/project-details/project-details.component';
 import { BlogRightSidebarComponent } from './components/pages/blog-right-sidebar/blog-right-sidebar.component';
 import { ErrorComponent } from './components/pages/error/error.component';
 
@@ -34,7 +34,7 @@ import { InterceptorReponseRequestService } from './core/interceptor/interceptor
 import { ProfilUserComponent } from './components/pages/profil-user/profil-user.component';
 import { TokenInterceptorService } from './core/token-interceptor/token-interceptor.service';
 
-import { LocationStrategy, PathLocationStrategy  } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy  } from '@angular/common';
 
 
 
@@ -84,7 +84,7 @@ import { LocationStrategy, PathLocationStrategy  } from '@angular/common';
         },
         {
             provide: LocationStrategy,
-            useClass: PathLocationStrategy
+            useClass: HashLocationStrategy
         }
     ],
     bootstrap: [AppComponent]

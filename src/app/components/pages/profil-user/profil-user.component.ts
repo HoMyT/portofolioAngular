@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-
+import { v4 as uuidv4 } from 'uuid';
 import { RequeteService } from 'src/app/core/service/requete.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profil-user',
@@ -14,8 +15,11 @@ export class ProfilUserComponent {
     sendImg!: FormGroup;
     sendProject!: FormGroup;
     dataProjectUSer!: Array<unknown>
-    noProject: boolean = false;
+    noProject: boolean ;
     logoEntreprise!: unknown;
+    images: File;
+
+    constructor(private ras: RequeteService, private fb: FormBuilder, private router: Router){}
 
     ngOnInit(): void{
         this.sendImg = this.fb.group({
@@ -31,10 +35,11 @@ export class ProfilUserComponent {
         this.ras.getInfoProjectUser().subscribe(data => {
             this.dataProjectUSer = data;
             console.log(this.dataProjectUSer)
-            if (this.dataProjectUSer.length == 0) {
+            if (this.dataProjectUSer.length === 0) {
                 this.noProject = true;
+                return this.noProject
             }
-            return this.dataProjectUSer
+            return this.dataProjectUSer;
         }, err => {
             return err
         })
@@ -49,27 +54,29 @@ export class ProfilUserComponent {
         }, err => {
             console.log(err)
         })
+
     }
 
-    constructor(private ras: RequeteService, private fb: FormBuilder){}
+    fileChoosen(event: any) {
+        if (event.target.value) {
+        const file = event.target.files[0];
+        this.image = file
+        }
+    }
+
     onSubmit(){
         const formData = new FormData();
-        formData.append('logo-entreprise', this.image);
+        formData.append('img-entreprise', this.image);
         this.ras.LogoEntreprise(formData).subscribe(res => { return res }, err => { return err });
     }
-    createProject(){
-        this.ras.createProjectUser(this.sendProject.value.name_project, this.sendProject.value.descriptif_project, this.sendProject.value.type_project).subscribe(res => { return res }, err => { return err })
-    }
-    getOneProject(uuid: string){
-        console.log(uuid)
-    }
-    ngAfterViewInit(): void{
-        // const auth = document.querySelector('#auth');
-        // console.log(auth)
-        // if (!auth && !localStorage.getItem('token')) {
-        //     window.location.reload();
-        //     console.log('non')
-        // }
 
+    createProject(){
+        const uuidProject = uuidv4();
+        this.ras.createProjectUser(uuidProject, this.sendProject.value.name_project, this.sendProject.value.descriptif_project, this.sendProject.value.type_project).subscribe(res => { return res }, err => { return err })
+        this.dataProjectUSer.push({uuid_project: uuidProject, name_project: this.sendProject.value.name_project, descriptif_project: this.sendProject.value.descriptif_project, type_project: this.sendProject.value.type_project })
+    }
+
+    getOneProject(uuid: string){
+        this.router.navigateByUrl(`projet-details/${uuid}`)
     }
 }

@@ -10,12 +10,19 @@ import { RequeteService } from 'src/app/core/service/requete.service';
 })
 export class ConnexionPageComponent {
     connexionUser!: FormGroup;
+    inscriptionUser!: FormGroup;
     constructor(private fb: FormBuilder, private ras: RequeteService, private router: Router){}
     ngOnInit(): void {
         this.connexionUser = this.fb.group({
             email: [null, Validators.required],
             password : [null, Validators.required]
         });
+        this.inscriptionUser = this.fb.group({
+            email: [null, Validators.required],
+            password: [null, Validators.required],
+            name: [null, Validators.required],
+            last_name: [null, Validators.required]
+        })
     }
     connexion(){
         if (this.connexionUser.valid) {
@@ -33,5 +40,12 @@ export class ConnexionPageComponent {
                 console.log(err)
             })
         }
+    }
+    inscription(){
+        this.ras.InscriptionUser(this.inscriptionUser.value.email, this.inscriptionUser.value.password,this.inscriptionUser.value.name, this.inscriptionUser.value.last_name).subscribe(data=>{
+            console.log(data)
+        }, err => {
+            console.log(err)
+        })
     }
 }

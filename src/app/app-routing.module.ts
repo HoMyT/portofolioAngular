@@ -16,7 +16,7 @@ import { ProjectsDetailsComponent } from './components/pages/projects-details/pr
 import { ProductsDetailsComponent } from './components/pages/products-details/products-details.component';
 import { BlogGridComponent } from './components/pages/blog-grid/blog-grid.component';
 import { BlogRightSidebarComponent } from './components/pages/blog-right-sidebar/blog-right-sidebar.component';
-import { BlogDetailsComponent } from './components/pages/blog-details/blog-details.component';
+import { BlogDetailsComponent } from './components/pages/project-details/project-details.component';
 import { ErrorComponent } from './components/pages/error/error.component';
 import { ConnexionPageComponent } from './components/pages/connexion-page/connexion-page.component';
 import { ProfilUserComponent } from './components/pages/profil-user/profil-user.component';
@@ -34,7 +34,7 @@ const routes: Routes = [
     {path: 'services-details', component: ServicesDetailsComponent},
     {path: 'blog-grid', component: BlogGridComponent},
     {path: 'blog-right-sidebar', component: BlogRightSidebarComponent},
-    {path: 'blog-details', component: BlogDetailsComponent},
+    {path: 'projet-details/:id', component: BlogDetailsComponent},
     {path: 'shop', component: ShopComponent},
     {path: 'products-details', component: ProductsDetailsComponent},
     {path: 'cart', component: CartComponent},

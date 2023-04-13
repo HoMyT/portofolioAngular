@@ -24,7 +24,7 @@
                         <img src="{{this.logoEntreprise}}" alt="image">
                     </div>
                     <form [formGroup]="sendImg">
-                        <input type="file" name="photo" formControlName="image" required />
+                        <input type="file" (change)="fileChoosen($event)" formControlName="image" required />
                         <button (click)="onSubmit()" type="submit" [disabled]="!sendImg.valid">Envoyer la photo</button>
                     </form>
                 </div>
@@ -39,9 +39,9 @@
                                     <a (click)="getOneProject(this.dataProjectUSers.uuid_project)"> {{this.dataProjectUSers.name_project}} </a>
                                 </h4>
                             </div>
-                            <div *ngIf="this.noProject == true">
+                            <!-- <div *ngIf="this.noProject == true">
                                 <p>Vous n'avez aucun project pour le moment</p>
-                            </div>
+                            </div> -->
                         </article>
                         <!-- <article class="item">
                             <a routerLink="/blog-details" class="thumb"><span class="fullimage cover bg2" role="img"></span></a>

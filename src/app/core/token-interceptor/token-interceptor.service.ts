@@ -25,9 +25,9 @@ export class TokenInterceptorService implements HttpInterceptor {
     }
     return next.handle(request).pipe(
         catchError(err => {
-            if (err.status === 401) {
+            if (err.status === 404 || err.status === 401 || err.status === 500) {
             // Supprimer le jeton JWT invalide du stockage local
-            this.router.navigateByUrl('/connexion');
+            this.router.navigateByUrl('connexion');
             localStorage.removeItem('token');
             return throwError('Authentication required');
         }
