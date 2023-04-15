@@ -25,7 +25,7 @@
 
                     </div>
                     <div class="comments-area">
-                        <h3 class="comments-title">2 Comments:</h3>
+                        <h3 class="comments-title">Comments:</h3>
                         <ol class="comment-list">
                             <li class="comment">
                                 <!-- <article class="comment-body">
@@ -67,24 +67,24 @@
                                             </div>
                                         </article>
                                     </li> -->
-                                    <ol class="children">
+                                    <ol class="children" *ngFor="let commentProjects of commentProject">
                                         <li class="comment">
                                             <article class="comment-body">
                                                 <footer class="comment-meta">
                                                     <div class="comment-author vcard">
-                                                        <img src="assets/img/client/3.jpg" class="avatar" alt="image">
-                                                        <b class="fn">Sarah Taylor</b>
-                                                        <span class="says">says:</span>
+                                                        <p> {{this.commentProjects.lenght}} </p>
+                                                        <b class="fn"> {{this.commentProjects.name}} {{this.commentProjects.last_name}} </b>
+                                                        <!-- <span class="says">says:</span> -->
                                                     </div>
-                                                    <div class="comment-metadata">
+                                                    <!-- <div class="comment-metadata">
                                                         <a routerLink="/"><time>April 24, 2020 at 10:59 am</time></a>
-                                                    </div>
+                                                    </div> -->
                                                 </footer>
                                                 <div class="comment-content">
-                                                    <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                    <p>{{this.commentProjects.commentaire}}</p>
                                                 </div>
                                                 <div class="reply">
-                                                    <a routerLink="/" class="comment-reply-link">Reply</a>
+                                                    <!-- <a routerLink="/" class="comment-reply-link">Reply</a> -->
                                                 </div>
                                             </article>
                                         </li>

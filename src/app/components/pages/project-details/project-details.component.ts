@@ -11,6 +11,7 @@ import { v4 as uuidv4 } from 'uuid';
 export class BlogDetailsComponent implements OnInit {
     dataProjectUSer: Array<unknown>;
     projectUser: Array<unknown>;
+    commentProject: Array<unknown>;
     formCommentaireProject: FormGroup;
     constructor(private ras: RequeteService, private router: Router, private fb: FormBuilder) { }
 
@@ -30,8 +31,11 @@ export class BlogDetailsComponent implements OnInit {
         this.ras.getOneProject(document.location.href.split('/')[5]).subscribe(data => {  console.log(data); this.projectUser = data }, err => { alert(err) })
         // commentaire project
         console.log(document.location.href.split('/')[5])
-        this.ras.getConversationProject(document.location.href.split('/')[5]).subscribe(data => {  console.log(data); }, err => { alert(err) })
+        this.ras.getConversationProject(document.location.href.split('/')[5]).subscribe(data => { console.log(data); this.commentProject = data; }, err => { alert(err) })
     }
+    // ngAfterViewInit(): void{
+    //     console.log(this.numberComments)
+    // }
 
     getOneProject(uuid){
         this.router.navigateByUrl(`projet-details/${uuid}`)
