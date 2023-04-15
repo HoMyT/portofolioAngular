@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+    token: boolean
+    constructor() { }
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+    ngOnInit(): void {
+    if (localStorage.getItem('token')) {
+        this.token = true;
+    }
+}
+    deconnexion(){
+        localStorage.removeItem('token');
+        window.location.reload();
+    }
 }

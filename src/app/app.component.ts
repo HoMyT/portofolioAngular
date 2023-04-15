@@ -25,6 +25,8 @@ export class AppComponent implements OnInit {
 
     ngOnInit(){
         this.recallJsFuntions();
+        console.log(window.location.href.split('/#'))
+        // window.location.href = window.location.href.split('/#')[0] + window.location.href.split('/#')[1]
         // const interval$ = interval(1000);
         // interval$.subscribe(value => console.log(value))
     }

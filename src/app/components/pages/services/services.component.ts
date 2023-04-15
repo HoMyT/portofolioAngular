@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TableauInfoServiceService } from 'src/app/core/service/tableauInfoPage/tableau-info-service.service';
 
+
 @Component({
   selector: 'app-services',
   templateUrl: './services.component.html',

@@ -29,14 +29,23 @@
                         <ul><a routerLink="/partner" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Partner</a></ul>
                     </li>
 
+                    <li class="nav-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+                        <ul><a routerLink="/profil" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Mon Profil</a></ul>
+                    </li>
 
+                    <li *ngIf="this.token == true" class="nav-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+                        <ul><a class="nav-link" (click)="deconnexion()" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Deconnexion</a></ul>
+                    </li>
 
                     <!-- <li class="nav-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"><a routerLink="/contact" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Contact</a></li> -->
                 </ul>
 
+
+
                 <div class="other-option">
                     <a class="default-btn" routerLink="/profil">Mon compte<span></span></a>
                 </div>
+
             </div>
         </nav>
     </div>
