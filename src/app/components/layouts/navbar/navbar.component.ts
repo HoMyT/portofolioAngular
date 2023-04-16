@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -6,16 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-    token: boolean
-    constructor() { }
+    constructor(private router : Router) { }
 
     ngOnInit(): void {
-    if (localStorage.getItem('token')) {
-        this.token = true;
-    }
+
 }
     deconnexion(){
-        localStorage.removeItem('token');
-        window.location.reload();
+        if(localStorage.getItem('token')){
+            localStorage.removeItem('token');
+            this.router.navigateByUrl('connexion')
+        } else {
+            alert('Vous devez etre connectez pour effectuez cette actions');
+        }
+
+    }
+    GoToProfil(){
+        this.router.navigateByUrl(`/profil/`)
     }
 }

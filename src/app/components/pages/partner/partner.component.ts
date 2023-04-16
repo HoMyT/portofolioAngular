@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RequeteService } from 'src/app/core/service/requete.service';
+import { RequeteService } from 'src/app/core/service/service/requete.service';
 
 @Component({
   selector: 'app-partner',

@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
-import { RequeteService } from 'src/app/core/service/requete.service';
+import { RequeteService } from 'src/app/core/service/service/requete.service';
 import { Router } from '@angular/router';
+import { UserServiceService } from 'src/app/core/service/service-user/user-service.service';
 
 @Component({
   selector: 'app-profil-user',
@@ -19,7 +20,7 @@ export class ProfilUserComponent {
     logoEntreprise!: unknown;
     images: File;
 
-    constructor(private ras: RequeteService, private fb: FormBuilder, private router: Router){}
+    constructor(private ras: RequeteService, private uss: UserServiceService, private fb: FormBuilder, private router: Router){}
 
     ngOnInit(): void{
         this.sendImg = this.fb.group({
@@ -32,7 +33,7 @@ export class ProfilUserComponent {
             type_project: [null, Validators.required]
         })
 
-        this.ras.getInfoProjectUser().subscribe(data => {
+        this.uss.getInfoProjectUser().subscribe(data => {
             this.dataProjectUSer = data;
             console.log(this.dataProjectUSer)
             if (this.dataProjectUSer.length === 0) {
@@ -44,7 +45,7 @@ export class ProfilUserComponent {
             return err
         })
 
-        this.ras.getLogoEntreprise().subscribe(data=> {
+        this.uss.getLogoEntreprise().subscribe(data=> {
             console.log(data)
             if (data.length > 0) {
                 this.logoEntreprise = data.map(obj => obj.pathImg);
@@ -54,7 +55,6 @@ export class ProfilUserComponent {
         }, err => {
             console.log(err)
         })
-
     }
 
     fileChoosen(event: any) {

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ServicesComponent } from '../../components/pages/services/services.component';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { ServicesComponent } from 'src/app/components/pages/services/services.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,18 +14,6 @@ export class RequeteService {
     // Developpment
     url: string = "http://localhost:3000/v2/";
 
-    ConnexionUser(email:string, password: string): Observable<any>{
-        return this.http.post<any>(`${this.url}users/connexion`, {email, password})
-        .pipe(
-            catchError(this.handleError)
-        )
-    }
-    InscriptionUser(email: string, password: string, name: string, last_name: string): Observable<unknown>{
-        return this.http.post<unknown>(`${this.url}users/`, {email, password, name, last_name})
-        .pipe(
-            catchError(this.handleError)
-        )
-    }
 
     getMessageInfo(name:string, email:string, phone: number, subject:string, message:string): Observable<ServicesComponent>{
         return this.http.post<ServicesComponent>(`${this.url}email`, {name, email, phone, subject, message})
@@ -62,22 +50,9 @@ export class RequeteService {
         )
     }
 
-    getLogoEntreprise(): Observable<any[]>{
-        return this.http.get<any>(`${this.url}users/logo-entreprise`)
-        .pipe(
-            catchError(this.handleError)
-        )
-    }
-
-    getInfoProjectUser(): Observable<any[]>{
-        return this.http.get<any>(`${this.url}users/info-project`)
-        .pipe(
-            catchError(this.handleError)
-        )
-    }
 
     getOneProject(uuid: string): Observable<any>{
-        console.log(`${this.url}project-user/one-project/${uuid}`)
+
         return this.http.get<any>(`${this.url}project-user/one-project/${uuid}`)
         .pipe(
             catchError(this.handleError)

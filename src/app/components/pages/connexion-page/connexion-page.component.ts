@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RequeteService } from 'src/app/core/service/requete.service';
+import { RequeteService } from 'src/app/core/service/service/requete.service';
+import { UserServiceService } from 'src/app/core/service/service-user/user-service.service';
 
 @Component({
   selector: 'app-connexion-page',
@@ -11,7 +12,7 @@ import { RequeteService } from 'src/app/core/service/requete.service';
 export class ConnexionPageComponent {
     connexionUser!: FormGroup;
     inscriptionUser!: FormGroup;
-    constructor(private fb: FormBuilder, private ras: RequeteService, private router: Router){}
+    constructor(private fb: FormBuilder, private uss: UserServiceService, private router: Router){}
     ngOnInit(): void {
         this.connexionUser = this.fb.group({
             email: [null, Validators.required],
@@ -27,22 +28,25 @@ export class ConnexionPageComponent {
     connexion(){
         if (this.connexionUser.valid) {
             const objConnexion = { email: this.connexionUser.value.email, password: this.connexionUser.value.password };
-            this.ras.ConnexionUser(this.connexionUser.value.email, this.connexionUser.value.password).subscribe(message => {
-                console.log(message)
+            this.uss.ConnexionUser(this.connexionUser.value.email, this.connexionUser.value.password).subscribe(message => {
                 let token = JSON.stringify(message.token)
                 try {
                     localStorage.setItem('token', token)
                 } catch (error) {
-                    console.log(error)
+                    alert(error)
                 }
-                this.router.navigateByUrl('/profil')
+                if (message.admin == true) {
+                    this.router.navigateByUrl('/admin-page');
+                } else {
+                    this.router.navigateByUrl('/profil')
+                }
             }, err => {
-                console.log(err)
+                alert(err)
             })
         }
     }
     inscription(){
-        this.ras.InscriptionUser(this.inscriptionUser.value.email, this.inscriptionUser.value.password,this.inscriptionUser.value.name, this.inscriptionUser.value.last_name).subscribe(data=>{
+        this.uss.InscriptionUser(this.inscriptionUser.value.email, this.inscriptionUser.value.password,this.inscriptionUser.value.name, this.inscriptionUser.value.last_name).subscribe(data=>{
             console.log(data)
         }, err => {
             console.log(err)

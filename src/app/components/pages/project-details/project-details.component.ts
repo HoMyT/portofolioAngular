@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RequeteService } from 'src/app/core/service/requete.service';
+import { RequeteService } from 'src/app/core/service/service/requete.service';
+import { UserServiceService } from 'src/app/core/service/service-user/user-service.service';
 import { v4 as uuidv4 } from 'uuid';
 @Component({
   selector: 'app-blog-details',
@@ -13,7 +14,7 @@ export class BlogDetailsComponent implements OnInit {
     projectUser: Array<unknown>;
     commentProject: Array<unknown>;
     formCommentaireProject: FormGroup;
-    constructor(private ras: RequeteService, private router: Router, private fb: FormBuilder) { }
+    constructor(private ras: RequeteService,private uss: UserServiceService, private router: Router, private fb: FormBuilder) { }
 
     ngOnInit(): void {
 
@@ -21,7 +22,7 @@ export class BlogDetailsComponent implements OnInit {
             commentaire: [null, [Validators.required, Validators.minLength(10)]]
         })
 
-        this.ras.getInfoProjectUser().subscribe(data => {
+        this.uss.getInfoProjectUser().subscribe(data => {
             this.dataProjectUSer = data;
             return this.dataProjectUSer;
         }, err => {

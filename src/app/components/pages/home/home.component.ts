@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RequeteService } from 'src/app/core/service/requete.service';
+import { RequeteService } from 'src/app/core/service/service/requete.service';
+
 import { TableauInfoServiceService } from 'src/app/core/service/tableauInfoPage/tableau-info-service.service';
 
 @Component({
@@ -28,8 +29,15 @@ export class HomeComponent implements OnInit {
         subject: [null, Validators.required],
         message: [null, Validators.required]
     });
+    if (window.location.hash) {
+        console.log(window.location.hash)
+        window.location.hash = '';
 
+    }
+    // window.location.replace("http://localhost:4200")
 }
+
+
 
     sendEmail(){
         this.ras.getMessageInfo(this.sendMessage.value.name, this.sendMessage.value.email, this.sendMessage.value.phone, this.sendMessage.value.subject, this.sendMessage.value.message).subscribe(data => {
@@ -39,3 +47,7 @@ export class HomeComponent implements OnInit {
         })
     }
 }
+function next() {
+    throw new Error('Function not implemented.');
+}
+

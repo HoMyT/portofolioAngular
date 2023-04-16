@@ -1,0 +1,72 @@
+
+<div class="page-title-area item-bg4">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="page-title-content">
+                    <h2>Admin page</h2>
+                    <ul>
+                        <li><a routerLink="/">Home</a></li>
+                        <li>Projet Details</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<h3>Project</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">name Project</th>
+            <th scope="col">Descriptif Project</th>
+        </tr>
+    </thead>
+    <button (click)="test()">Click</button>
+    <tbody>
+        <tr *ngFor="let dataProjects of dataProject">
+            <th scope="row" (click)="GoToProject(this.dataProjects.uuid_project)"> {{this.dataProjects.uuid_project}} </th>
+            <td> {{this.dataProjects.name_project}} </td>
+            <td> {{this.dataProjects.descriptif_project}} </td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<br>
+<h3>Email</h3>
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+  <i class="fa-duotone fa-trash"></i>
