@@ -1,4 +1,4 @@
-
+<app-nav-bar-admin></app-nav-bar-admin>
 <div class="page-title-area item-bg4">
     <div class="d-table">
         <div class="d-table-cell">
@@ -26,7 +26,7 @@
             <th scope="col">Descriptif Project</th>
         </tr>
     </thead>
-    <button (click)="test()">Click</button>
+
     <tbody>
         <tr *ngFor="let dataProjects of dataProject">
             <th scope="row" (click)="GoToProject(this.dataProjects.uuid_project)"> {{this.dataProjects.uuid_project}} </th>
@@ -43,30 +43,23 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">uuid</th>
+
+        <th scope="col">name</th>
+        <th scope="col">email</th>
+        <th scope="col">subject</th>
+        <th scope="col">phone</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
+      <tr *ngFor="let dataEmails of dataEmail">
+        <th scope="row"> {{this.dataEmails.uuid}} </th>
+        <td> {{this.dataEmails.name}} </td>
+        <td> <a href="mailto:{{this.dataEmails.email}}">{{this.dataEmails.email}}</a> </td>
+        <td> {{this.dataEmails.subject}} </td>
+        <td> {{this.dataEmails.phone}} </td>
+    </tr>
     </tbody>
-  </table>
-  <i class="fa-duotone fa-trash"></i>
+</table>
+<br><br>
+

@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  selector: 'app-nav-bar-admin',
+  templateUrl: './nav-bar-admin.component.html',
+  styleUrls: ['./nav-bar-admin.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavBarAdminComponent {
     verifToken : boolean;
     constructor(private router : Router) { }
 
@@ -24,9 +24,8 @@ export class NavbarComponent implements OnInit {
         } else {
             alert('Vous devez etre connectez pour effectuez cette actions');
         }
-
     }
-    GoToProfil(){
-        this.router.navigateByUrl(`/profil/`)
+    GoToAdmin(){
+        this.router.navigateByUrl(`/admin/admin-page`)
     }
 }

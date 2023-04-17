@@ -1,40 +1,54 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { PreloaderComponent } from './components/layouts/preloader/preloader.component';
-import { NavbarComponent } from './components/layouts/navbar/navbar.component';
 import { FooterComponent } from './components/layouts/footer/footer.component';
 import { SubscribeComponent } from './components/layouts/subscribe/subscribe.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { PageModule } from './components/pages/page-component/page.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+import { TokenInterceptorService } from './core/token-interceptor/token-interceptor.service';
+import { InterceptorReponseRequestService } from './core/interceptor/interceptor-reponse-request.service';
+import { NavBarAdminComponent } from './components/layouts/nav-bar-admin/nav-bar-admin.component';
 import { PageAdminModule } from './components/pages/admin/page-admin/page-admin.module';
+
+
 
 @NgModule({
     declarations: [
     AppComponent,
     PreloaderComponent,
-    NavbarComponent,
     FooterComponent,
     SubscribeComponent,
 
     ],
     imports: [
     BrowserModule,
-    AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     PageModule,
     PageAdminModule,
-    FontAwesomeModule
+    FontAwesomeModule,
     ],
+
     providers: [
         {
             provide: LocationStrategy,
             useClass: HashLocationStrategy
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: TokenInterceptorService,
+            multi: true
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: InterceptorReponseRequestService,
+            multi: true
         }
     ],
     bootstrap: [AppComponent]

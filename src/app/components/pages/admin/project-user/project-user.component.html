@@ -1,1 +1,86 @@
-<p>project-user works!</p>
+<app-nav-bar-admin></app-nav-bar-admin>
+
+<div class="page-title-area item-bg4">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="page-title-content">
+                    <h2>Blog Details</h2>
+                    <ul>
+                        <li><a routerLink="/">Home</a></li>
+                        <li>Projet Details</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="blog-details-area ptb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="blog-details-desc">
+                    <div class="article-content" *ngFor="let projectUsers of projectUser">
+                        <h3>{{this.projectUsers.name_project}}</h3>
+                        <p> {{this.projectUsers.descriptif_project}} </p>
+
+                    </div>
+                    <div class="comments-area">
+                        <h3 class="comments-title">Comments:</h3>
+                        <ol class="comment-list">
+                            <li class="comment">
+
+                                <ol class="children">
+
+                                    <ol class="children" *ngFor="let commentProjects of commentProject">
+                                        <li class="comment">
+                                            <article class="comment-body">
+                                                <footer class="comment-meta">
+                                                    <div class="comment-author vcard">
+                                                        <p> {{this.commentProjects.lenght}} </p>
+                                                        <b class="fn"> {{this.commentProjects.name}} {{this.commentProjects.last_name}} </b>
+
+                                                    </div>
+
+                                                </footer>
+                                                <div class="comment-content">
+                                                    <p>{{this.commentProjects.commentaire}}</p>
+                                                </div>
+                                            </article>
+                                        </li>
+                                    </ol>
+                                </ol>
+                        </ol>
+                        <div class="comment-respond">
+                            <h3 class="comment-reply-title">Leave a Reply</h3>
+                            <form class="comment-form" [formGroup]="formCommentaireProject">
+                                <p class="comment-form-comment">
+                                    <label>Comment</label>
+                                    <textarea formControlName="commentaire" name="comment" id="comment" cols="45" rows="5" maxlength="65525" required="required"></textarea>
+                                </p>
+                                <p class="form-submit">
+                                    <input (click)="SendCommentaireProjet()" [className]="this.formCommentaireProject.valid ? 'submit-btn' : 'submit-btn-notValid' " [disabled]="!this.formCommentaireProject.valid" type="submit" name="submit" id="submit" class="submit">
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <aside class="widget-area" id="secondary">
+                    <section class="widget widget_plamb_posts_thumb">
+                        <h3 class="widget-title">Project</h3>
+                        <article *ngFor="let dataProjectUSers of dataProjectUSer" class="item">
+                            <div class="info w-100">
+                                <h4 class="title usmall">
+                                    <a (click)="getOneProject(this.dataProjectUSers.uuid_project)"> {{this.dataProjectUSers.name_project}} </a>
+                                </h4>
+                            </div>
+                        </article>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
