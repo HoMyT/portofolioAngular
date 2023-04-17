@@ -9,19 +9,16 @@ import { AdminServiceService } from 'src/app/core/service/service-admin/admin-se
 })
 export class AdminPageComponent {
     dataProject: Array<unknown>;
+    dataEmail: Array<unknown>;
     constructor(private adms : AdminServiceService, private router: Router){}
 
     ngOnInit(): void{
-        this.adms.adminGetAllProject().subscribe(data=>{
-            this.dataProject = data, console.log(this.dataProject)
-        }, err => {
-            console.log(err)
-        })
+        this.adms.adminGetAllProject().subscribe(data=>{ this.dataProject = data; }, err => { console.log(err) })
+
+        this.adms.adminGetEmail().subscribe(data => { this.dataEmail= data }, err => { console.log(err) })
     }
-    test(){
-        this.router.navigateByUrl('admin/test')
-    }
+
     GoToProject(uuid: string){
-        console.log(uuid)
+        this.router.navigateByUrl(`admin/project-detail/${uuid}`)
     }
 }

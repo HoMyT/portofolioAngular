@@ -9,12 +9,12 @@ declare let $: any;
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    providers: [
-        Location, {
-            provide: LocationStrategy,
-            useClass: PathLocationStrategy
-        }
-    ]
+    // providers: [
+    //     Location, {
+    //         provide: LocationStrategy,
+    //         useClass: PathLocationStrategy
+    //     }
+    // ]
 })
 export class AppComponent implements OnInit {
     location: any;

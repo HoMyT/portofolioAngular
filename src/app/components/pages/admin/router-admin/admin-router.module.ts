@@ -12,4 +12,4 @@ import { RouterAdminModule } from './router-admin.module';
     RouterAdminModule
   ]
 })
-export class GroupamaniaRouterModule { }
+export class RouterOfAdmin { }

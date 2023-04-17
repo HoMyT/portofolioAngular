@@ -21,6 +21,20 @@ export class AdminServiceService {
         )
     }
 
+    adminGetOneProject(uuid: string):Observable<any>{
+        return this.http.get(`${this.url}/one-project/${uuid}`)
+        .pipe(
+            catchError(this.handleError)
+        )
+    }
+
+    adminGetEmail():Observable<any>{
+        return this.http.get(`${this.url}/get-email/`)
+        .pipe(
+            catchError(this.handleError)
+        )
+    }
+
 
     private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {

@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
     constructor(private fb: FormBuilder, private ras: RequeteService, private tis: TableauInfoServiceService){}
 
     ngOnInit(): void {
+    // history.pushState(null, null, '/');
     this.data = this.tis.servicePageHome;
     this.dataService = this.tis.tableauServicePageHome;
 
@@ -34,7 +35,7 @@ export class HomeComponent implements OnInit {
         window.location.hash = '';
 
     }
-    // window.location.replace("http://localhost:4200")
+
 }
 
 

@@ -11,12 +11,12 @@ import { ErrorComponent } from './components/pages/error/error.component';
 import { ConnexionPageComponent } from './components/pages/connexion-page/connexion-page.component';
 import { ProfilUserComponent } from './components/pages/profil-user/profil-user.component';
 import { AdminPageComponent } from './components/pages/admin/admin-page/admin-page.component';
-import { ProjectsDetailsComponent } from './components/pages/projects-details/projects-details.component';
+
+
 
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
-    {path: 'projects-details', component: ProjectsDetailsComponent},
     {path: 'partner', component: PartnerComponent},
     {path: 'services', component: ServicesComponent},
     {path: 'services-details', component: ServicesDetailsComponent},
@@ -25,7 +25,7 @@ const routes: Routes = [
     {path: 'profil/', component: ProfilUserComponent},
     {path: 'connexion', component: ConnexionPageComponent},
 
-    {path: 'admin', loadChildren: () => import('./components/pages/admin/router-admin/router-admin.module').then(m => m.RouterAdminModule) },
+    {path: 'admin', loadChildren: () => import('./components/pages/admin/router-admin/admin-router.module').then(m => m.RouterOfAdmin) },
     {path: '**', component: ErrorComponent},
 ];
 

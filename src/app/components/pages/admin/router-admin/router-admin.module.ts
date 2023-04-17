@@ -8,7 +8,7 @@ import { ProjectUserComponent } from '../project-user/project-user.component';
 
 const routes: Routes = [
     {path: 'admin-page', component: AdminPageComponent},
-    {path: 'test', component: ProjectUserComponent}
+    {path: 'project-detail/:id', component: ProjectUserComponent}
 ]
 
 
