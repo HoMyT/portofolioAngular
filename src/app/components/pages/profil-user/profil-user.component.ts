@@ -35,8 +35,7 @@ export class ProfilUserComponent {
 
         this.uss.getInfoProjectUser().subscribe(data => {
             this.dataProjectUSer = data;
-            console.log(this.dataProjectUSer)
-            if (this.dataProjectUSer.length === 0) {
+            if (this.dataProjectUSer.length == 0) {
                 this.noProject = true;
                 return this.noProject
             }
@@ -46,14 +45,13 @@ export class ProfilUserComponent {
         })
 
         this.uss.getLogoEntreprise().subscribe(data=> {
-            console.log(data)
             if (data.length > 0) {
                 this.logoEntreprise = data.map(obj => obj.pathImg);
             } else {
                 this.logoEntreprise = "assets/img/blog-details/2.jpg";
             }
         }, err => {
-            console.log(err)
+            alert(err)
         })
     }
 

@@ -19,8 +19,8 @@ export class UserServiceService {
             catchError(this.handleError)
         )
     }
-    InscriptionUser(email: string, password: string, name: string, last_name: string): Observable<unknown>{
-        return this.http.post<unknown>(`${this.url}users/`, {email, password, name, last_name})
+    InscriptionUser(email: string, password: string, confirmPassword: string, name: string, last_name: string): Observable<unknown>{
+        return this.http.post<unknown>(`${this.url}users/`, {email, password, confirmPassword, name, last_name})
         .pipe(
             catchError(this.handleError)
         )

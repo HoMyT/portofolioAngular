@@ -30,11 +30,6 @@ export class HomeComponent implements OnInit {
         subject: [null, Validators.required],
         message: [null, Validators.required]
     });
-    if (window.location.hash) {
-        console.log(window.location.hash)
-        window.location.hash = '';
-
-    }
 
 }
 

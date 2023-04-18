@@ -14,7 +14,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TokenInterceptorService } from './core/token-interceptor/token-interceptor.service';
 import { InterceptorReponseRequestService } from './core/interceptor/interceptor-reponse-request.service';
 import { NavBarAdminComponent } from './components/layouts/nav-bar-admin/nav-bar-admin.component';
-import { PageAdminModule } from './components/pages/admin/page-admin/page-admin.module';
+import { PageAdminModule } from './components/pages/admin/page-admin-module/page-admin.module';
 
 
 

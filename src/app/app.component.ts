@@ -2,21 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angular/router';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { filter } from 'rxjs/operators';
-import { interval } from 'rxjs';
 declare let $: any;
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    // providers: [
-    //     Location, {
-    //         provide: LocationStrategy,
-    //         useClass: PathLocationStrategy
-    //     }
-    // ]
+    providers: [
+        Location, {
+            provide: LocationStrategy,
+            useClass: PathLocationStrategy
+        }
+    ]
 })
 export class AppComponent implements OnInit {
+
     location: any;
     routerSubscription: any;
 
