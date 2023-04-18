@@ -23,19 +23,9 @@ export class ProjectUserComponent implements OnInit {
         })
 
 
-        this.adms.adminGetOneProject(document.location.href.split('project-detail/')[1]).subscribe(data => {
-            console.log(data)
-        }, err => {
-            console.log(err)
-        })
+        this.adms.adminGetOneProject(document.location.href.split('project-detail/')[1]).subscribe(data => { return data }, err => { console.log(err) })
 
-        this.uss.getInfoProjectUser().subscribe(data => {
-            this.dataProjectUSer = data;
-
-            return this.dataProjectUSer;
-        }, err => {
-            return err
-        })
+        this.uss.getInfoProjectUser().subscribe(data => { this.dataProjectUSer = data; }, err => { return err })
         //project
         this.ras.getOneProject(document.location.href.split('project-detail/')[1]).subscribe(data => { this.projectUser = data }, err => { alert(err) })
         // commentaire project
@@ -48,7 +38,6 @@ export class ProjectUserComponent implements OnInit {
     SendCommentaireProjet(){
         const uuid = uuidv4();
         this.ras.conversationProject(uuid, document.location.href.split('project-detail/')[1], this.formCommentaireProject.value.commentaire).subscribe(data=> {
-            console.log(data)
             window.location.reload();
         }, err => {
             console.log(err)

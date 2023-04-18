@@ -22,21 +22,12 @@ export class BlogDetailsComponent implements OnInit {
             commentaire: [null, [Validators.required, Validators.minLength(10)]]
         })
 
-        this.uss.getInfoProjectUser().subscribe(data => {
-            this.dataProjectUSer = data;
-            return this.dataProjectUSer;
-        }, err => {
-            return err
-        })
+        this.uss.getInfoProjectUser().subscribe(data => { this.dataProjectUSer = data; }, err => { return err })
         //project
-        this.ras.getOneProject(document.location.href.split('/')[5]).subscribe(data => {  console.log(data); this.projectUser = data }, err => { alert(err) })
+        this.ras.getOneProject(document.location.href.split('/')[5]).subscribe(data => { this.projectUser = data }, err => { alert(err) })
         // commentaire project
-        console.log(document.location.href.split('/')[5])
-        this.ras.getConversationProject(document.location.href.split('/')[5]).subscribe(data => { console.log(data); this.commentProject = data; }, err => { alert(err) })
+        this.ras.getConversationProject(document.location.href.split('/')[5]).subscribe(data => { this.commentProject = data; }, err => { alert(err) })
     }
-    // ngAfterViewInit(): void{
-    //     console.log(this.numberComments)
-    // }
 
     getOneProject(uuid){
         this.router.navigateByUrl(`projet-details/${uuid}`)
@@ -45,9 +36,9 @@ export class BlogDetailsComponent implements OnInit {
     SendCommentaireProjet(){
         const uuid = uuidv4();
         this.ras.conversationProject(uuid, document.location.href.split('/')[5], this.formCommentaireProject.value.commentaire).subscribe(data=> {
-            console.log(data)
+            window.location.reload()
         }, err => {
-            console.log(err)
+            alert(err)
         })
     }
 }

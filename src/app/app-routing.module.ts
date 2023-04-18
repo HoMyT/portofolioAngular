@@ -22,7 +22,7 @@ const routes: Routes = [
     {path: 'services-details', component: ServicesDetailsComponent},
     {path: 'projet-details/:id', component: BlogDetailsComponent},
     // {path: 'contact', component: ContactComponent},
-    {path: 'profil/', component: ProfilUserComponent},
+    {path: 'profil', component: ProfilUserComponent},
     {path: 'connexion', component: ConnexionPageComponent},
 
     {path: 'admin', loadChildren: () => import('./components/pages/admin/router-admin/admin-router.module').then(m => m.RouterOfAdmin) },
